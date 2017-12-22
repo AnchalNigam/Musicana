@@ -34,11 +34,31 @@
         <div> Duration </div>
         </div>
         <div class="song-list">
-        <div class="song">
-        <span class="song-name"></span>
+        <div class="song" id="song1">
+       <span  class="song-name"></span>
         <span class="song-artist"></span>
         <span class="song-album"></span>
-        <span class="song-length"></span>
+        <span  class="song-length"></span>
+
+        </div>
+		<div class="song" id="song2">
+        <span  class="song-name"></span>
+        <span class="song-artist"></span>
+        <span class="song-album"></span>
+        <span  class="song-length"></span>
+        </div>
+		<div class="song" id="song3">
+         <span  class="song-name"></span>
+        <span class="song-artist"></span>
+        <span class="song-album"></span>
+        <span  class="song-length"></span>
+
+        </div>
+		<div class="song" id="song4">
+        <span  class="song-name"></span>
+        <span class="song-artist"></span>
+        <span class="song-album"></span>
+        <span  class="song-length"></span>
 
         </div>
         </div>
@@ -77,8 +97,34 @@
 			$('#errortext h4').text(mess);
         }
     });
-	function togglesong(){
+	
+	
+
+	function updateCurrentTime() {
+var song = document.querySelector('audio');
+var currentTime=Math.floor(song.currentTime);
+currentTime=fancyTimeFormat(currentTime);
+var duration=Math.floor(song.duration);
+duration=fancyTimeFormat(duration);
+$('.time-elapsed').text(currentTime);
+$('.song-duration').text(duration);
+}
+var songName=["Tamma Tamma Again Song","Humma Song","Nashe si chadh Gye","The Breakup Song"];
+var fileName=["song1.mp3","song2.mp3","song3.mp3","song4.mp3"];
+
+window.onload = function() {
+$('#song1 .song-name').text(songName[0]);
+ $('#song2 .song-name').text(songName[1]); 
+$('#song3 .song-name').text(songName[2]); 
+$('#song4 .song-name').text(songName[3]); 
+updateCurrentTime();
+setInterval(function() {
+updateCurrentTime();
+},1000);
+}	
+function togglesong(){
 	 var song = document.querySelector('audio');
+	
         if (song.paused == true) {
             console.log('Playing');
             $('.play-icon').removeClass('fa-play').addClass('fa-pause');
@@ -110,23 +156,61 @@
     return ret;
 }
 
-	function updateCurrentTime() {
-var song = document.querySelector('audio');
-var currentTime=Math.floor(song.currentTime);
-currentTime=fancyTimeFormat(currentTime);
-var duration=Math.floor(song.duration);
-duration=fancyTimeFormat(duration);
-$('.time-elapsed').text(currentTime);
-$('.song-duration').text(duration);
-}
-var songName="Tamma Tamma Again Song";
-window.onload = function() {
-$('.song-name').text(songName);
-updateCurrentTime();
-setInterval(function() {
-updateCurrentTime();
-},1000);
-}	
+$('#song1').click(function(){
+      var audio=document.querySelector('audio');
+	 
+	 var currentSong=audio.src;
+	 if(currentSong.search(fileName[0])!=-1){
+	     togglesong();
+	     
+	 
+	 }
+	 else{
+	    audio.src=fileName[0];
+		togglesong();
+	 }
+	 
+});
+$('#song2').click(function(){
+      var audio=document.querySelector('audio');
+	 var currentSong=audio.src;
+	 if(currentSong.search(fileName[1])!=-1){
+	     togglesong();
+	     
+	 
+	 }
+	 else{
+	    audio.src=fileName[1];
+		togglesong();
+	 }
+});
+$('#song3').click(function(){
+      var audio=document.querySelector('audio');
+	var currentSong=audio.src;
+	 if(currentSong.search(fileName[2])!=-1){
+	     togglesong();
+	     
+	 
+	 }
+	 else{
+	    audio.src=fileName[2];
+		togglesong();
+	 }
+});
+$('#song4').click(function(){
+      var audio=document.querySelector('audio');
+	var currentSong=audio.src;
+	 if(currentSong.search(fileName[3])!=-1){
+	     togglesong();
+	     
+	 
+	 }
+	 else{
+	    audio.src=fileName[3];
+		togglesong();
+	 }
+});
+ 
     $('.play-icon').on('click', function() {
        togglesong();
     });
