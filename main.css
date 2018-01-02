@@ -135,7 +135,7 @@ h1 {
     text-align: right;
 }
 
-.song-list .song {
+.song {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.5);
@@ -156,6 +156,14 @@ h1 {
 .song .song-duration {
     text-align: right;
 }
+.player-buttons .fa {
+    margin-right: 2rem;
+}
+
+.fa.disabled {
+    color: gray;
+}
+
 
 .song-list .song:hover {
     background-color: #282828;
@@ -165,3 +173,32 @@ h1 {
 .song-length {
     text-align: right;
 }
+.content {
+    position: relative;
+}
+.current-song-wrapper {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+}
+
+.current-song-image {
+    height: 100px;
+    width: 100px;
+    margin-right: 1rem;
+}
+
+.current-song-name {
+    font-size: 1.4rem;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.current-song-album {
+    margin-top: 0.4rem;
+}
+table.dataTable tbody tr {
+    background-color: initial;
+}
+ 
+
